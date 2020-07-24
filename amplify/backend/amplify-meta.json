@@ -22,7 +22,7 @@
                 "s3TemplateURL": "https://s3.amazonaws.com/amplify-apptest-dev-212123-deployment/amplify-cfn-templates/auth/apptest77c087ce-cloudformation-template.yml",
                 "logicalId": "authapptest77c087ce"
             },
-            "lastPushTimeStamp": "2020-07-24T02:40:01.945Z",
+            "lastPushTimeStamp": "2020-07-24T02:50:18.750Z",
             "output": {
                 "AppClientSecret": "1un1gnktoavgh0svervoucdl9t20i2cl3ar94s98jcvgojgum1p0",
                 "UserPoolId": "us-east-1_TsvMHMWrA",
@@ -33,6 +33,30 @@
                 "UserPoolName": "apptest77c087ce_userpool_77c087ce"
             },
             "lastPushDirHash": "sZfVnJMW++4kbMUfl1+OVHENcis="
+        }
+    },
+    "function": {
+        "lambdatest": {
+            "build": true,
+            "providerPlugin": "awscloudformation",
+            "service": "Lambda",
+            "dependsOn": []
+        }
+    },
+    "api": {
+        "apirestReact": {
+            "service": "API Gateway",
+            "providerPlugin": "awscloudformation",
+            "dependsOn": [
+                {
+                    "category": "function",
+                    "resourceName": "lambatest1",
+                    "attributes": [
+                        "Name",
+                        "Arn"
+                    ]
+                }
+            ]
         }
     }
 }

@@ -6,5 +6,29 @@
 			"dependsOn": [],
 			"customAuth": false
 		}
+	},
+	"function": {
+		"lambdatest": {
+			"build": true,
+			"providerPlugin": "awscloudformation",
+			"service": "Lambda",
+			"dependsOn": []
+		}
+	},
+	"api": {
+		"apirestReact": {
+			"service": "API Gateway",
+			"providerPlugin": "awscloudformation",
+			"dependsOn": [
+				{
+					"category": "function",
+					"resourceName": "lambatest1",
+					"attributes": [
+						"Name",
+						"Arn"
+					]
+				}
+			]
+		}
 	}
 }
